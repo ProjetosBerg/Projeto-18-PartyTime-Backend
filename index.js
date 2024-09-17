@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const serviceController = require("./controllers/serviceController");
 require('dotenv').config();
 const app = express();
 
@@ -13,8 +14,19 @@ const conn = require('./db/conn');
 
 // Routes
 
-const routes = require('./routes/router');
-app.use("/api", routes);
+app.get('/', (req, res) => {
+    return res.json("Hello world");
+})
+
+app.post("/api/services", (req, res) => serviceController.create(req, res));
+
+app.get("/api/services", (req, res) => serviceController.getAll(req, res));
+
+app.get("/api/services/:id", (req, res) => serviceController.get(req, res));
+
+app.delete("/api/services/:id", (req, res) => serviceController.delete(req, res));
+
+app.put("/api/services/:id", (req, res) => serviceController.udpate(req, res));
 
 conn();
 

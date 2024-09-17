@@ -15,7 +15,7 @@ const conn = require('./db/conn');
 // Routes
 
 app.get('/', (req, res) => {
-    return res.json("Hello world");
+    return res.json("Hello worlde");
 })
 
 app.post("/services", (req, res) => serviceController.create(req, res));

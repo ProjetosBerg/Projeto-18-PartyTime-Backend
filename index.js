@@ -28,7 +28,12 @@ app.delete("/services/:id", (req, res) => serviceController.delete(req, res));
 
 app.put("/services/:id", (req, res) => serviceController.udpate(req, res));
 
-conn();
+conn().catch(err => {
+    console.error("Erro ao conectar ao banco de dados:", err);
+});
+
+
+
 
 const Port = process.env.PORT || 3000;
 

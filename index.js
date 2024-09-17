@@ -13,8 +13,8 @@ const conn = require('./db/conn');
 
 // Routes
 
-// const routes = require('./routes/router');
-// app.use("/api", routes);
+const routes = require('./routes/router');
+app.use("/api", routes);
 
 app.get('/', (req, res) => {
     return res.json("Hello word")

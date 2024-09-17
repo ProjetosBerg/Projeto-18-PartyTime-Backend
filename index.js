@@ -15,7 +15,10 @@ const conn = require('./db/conn');
 // Routes
 
 app.get('/', (req, res) => {
-    return res.json("Hello worlde");
+    res.json("Hello worlde");
+    conn().catch(err => {
+        console.error("Erro ao conectar ao banco de dados:", err);
+    });
 })
 
 app.post("/services", (req, res) => serviceController.create(req, res));

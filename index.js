@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const serviceController = require("./controllers/serviceController");
 require('dotenv').config();
 const app = express();
 
@@ -14,29 +13,14 @@ const conn = require('./db/conn');
 
 // Routes
 
+const routes = require('./routes/router');
+app.use("/api", routes);
+
 app.get('/', (req, res) => {
-    res.json("Hello worlde");
-    conn().catch(err => {
-        console.error("Erro ao conectar ao banco de dados:", err);
-    });
+    return res.json("Hello word")
 })
 
-app.post("/services", (req, res) => serviceController.create(req, res));
-
-app.get("/services", (req, res) => serviceController.getAll(req, res));
-
-app.get("/services/:id", (req, res) => serviceController.get(req, res));
-
-app.delete("/services/:id", (req, res) => serviceController.delete(req, res));
-
-app.put("/services/:id", (req, res) => serviceController.udpate(req, res));
-
-conn().catch(err => {
-    console.error("Erro ao conectar ao banco de dados:", err);
-});
-
-
-
+conn();
 
 const Port = process.env.PORT || 3000;
 

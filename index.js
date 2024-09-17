@@ -16,10 +16,6 @@ const conn = require('./db/conn');
 const routes = require('./routes/router');
 app.use("/api", routes);
 
-app.get('/', (req, res) => {
-    return res.json("Hello word")
-})
-
 conn();
 
 const Port = process.env.PORT || 3000;

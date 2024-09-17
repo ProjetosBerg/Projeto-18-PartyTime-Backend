@@ -18,15 +18,15 @@ app.get('/', (req, res) => {
     return res.json("Hello world");
 })
 
-app.post("/api/services", (req, res) => serviceController.create(req, res));
+app.post("/services", (req, res) => serviceController.create(req, res));
 
-app.get("/api/services", (req, res) => serviceController.getAll(req, res));
+app.get("/services", (req, res) => serviceController.getAll(req, res));
 
-app.get("/api/services/:id", (req, res) => serviceController.get(req, res));
+app.get("/services/:id", (req, res) => serviceController.get(req, res));
 
-app.delete("/api/services/:id", (req, res) => serviceController.delete(req, res));
+app.delete("/services/:id", (req, res) => serviceController.delete(req, res));
 
-app.put("/api/services/:id", (req, res) => serviceController.udpate(req, res));
+app.put("/services/:id", (req, res) => serviceController.udpate(req, res));
 
 conn();
 

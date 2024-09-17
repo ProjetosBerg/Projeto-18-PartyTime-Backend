@@ -9,7 +9,11 @@ async function main(){
         const password = process.env.DB_PASSWORD;
         const uri = `mongodb+srv://${username}:${password}@cluster0.wgrog.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-        await mongoose.connect(uri);
+        await mongoose.connect(uri,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 50000,
+        });
 
         console.log('MongoDB conectado com sucesso!');
     } catch(error) {
